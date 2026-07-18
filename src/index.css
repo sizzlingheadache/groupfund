@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #8a5cf5;
+  --color-brand-purple-dark: #6e3ad6;
+  --color-brand-cyan: #00f2fe;
+  --color-brand-pink: #ff007a;
+  --color-brand-dark: #0b0a0f;
+  --color-brand-card: #15131d;
+  --color-brand-card-light: #1e1b29;
+  
+  --animate-pulse-glow: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-border-spin: border-spin 4s linear infinite;
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      filter: drop-shadow(0 0 15px rgba(138, 92, 245, 0.6));
+    }
+    50% {
+      opacity: .8;
+      filter: drop-shadow(0 0 5px rgba(138, 92, 245, 0.2));
+    }
+  }
+
+  @keyframes border-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Custom CSS utilities */
+body {
+  background-color: #0b0a0f;
+  color: #e5e7eb;
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom fonts */
+
+.font-grotesk {
+  font-family: 'Space Grotesk', monospace;
+}
+
+/* Neon glow card */
+.glow-card {
+  position: relative;
+  background: rgba(21, 19, 29, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(138, 92, 245, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-card:hover {
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 0 30px rgba(138, 92, 245, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Neon text shadows */
+.text-glow-purple {
+  text-shadow: 0 0 10px rgba(138, 92, 245, 0.5);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(138, 92, 245, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(138, 92, 245, 0.6);
+}
+
+/* Custom animations for loading circles */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Shimmer overlay effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Custom focus shimmer animation for input focus state */
+@keyframes focus-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.input-focus-shimmer:focus {
+  background: linear-gradient(
+    90deg,
+    rgba(11, 10, 15, 0.9) 0%,
+    rgba(138, 92, 245, 0.15) 50%,
+    rgba(11, 10, 15, 0.9) 100%
+  );
+  background-size: 200% 100%;
+  animation: focus-shimmer 2s infinite linear;
+  border-color: rgba(138, 92, 245, 0.6);
+  box-shadow: 0 0 15px rgba(138, 92, 245, 0.2);
+}
+
+/* Hype Emoji custom dynamic pulse */
+.pulse-custom {
+  display: inline-block;
+  animation: pulse-custom-key var(--pulse-duration, 1.5s) infinite ease-in-out;
+}
+
+@keyframes pulse-custom-key {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(255, 120, 0, 0.3));
+  }
+  50% {
+    transform: scale(1.35);
+    filter: drop-shadow(0 0 12px rgba(255, 120, 0, 0.8));
+  }
+}
