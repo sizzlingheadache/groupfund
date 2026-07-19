@@ -28,7 +28,7 @@ import {
 // Hardcoded Factory details
 const FACTORY_ADDRESS = '0x605501e50602111131a2367F6341BAd97B88dfFa';
 const CHAIN_ID = 10143;
-const RPC_URL = 'https://testnet-rpc.monad.xyz/';
+const RPC_URL = 'https://rpc.ankr.com/monad_testnet';
 
 const FACTORY_ABI = [
 	{
