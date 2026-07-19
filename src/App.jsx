@@ -26,13 +26,18 @@ import {
 } from 'lucide-react';
 
 // Hardcoded Factory details
-const FACTORY_ADDRESS = '0x605501e50602111131a2367F6341BAd97B88dfFa';
+const FACTORY_ADDRESS = '0x56dFaD1cf089DE290bB905ac3b5D46055f0A3643';
 const CHAIN_ID = 10143;
 const RPC_URL = 'https://rpc.ankr.com/monad_testnet';
 
 const FACTORY_ABI = [
 	{
 		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_organizer",
+				"type": "address"
+			},
 			{
 				"internalType": "uint256",
 				"name": "_goalAmount",
@@ -44,51 +49,77 @@ const FACTORY_ABI = [
 				"type": "uint256"
 			}
 		],
-		"name": "createVault",
-		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
+		"type": "constructor"
 	},
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
 				"internalType": "address",
-				"name": "vaultAddress",
+				"name": "",
 				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "organizer",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "goalAmount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "deadline",
-				"type": "uint256"
 			}
 		],
-		"name": "VaultCreated",
-		"type": "event"
-	},
-	{
-		"inputs": [
+		"name": "contributions",
+		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "deployedVaults",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "currentBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "deadline",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "deposit",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "goalAmount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "organizer",
 		"outputs": [
 			{
 				"internalType": "address",
@@ -101,18 +132,33 @@ const FACTORY_ABI = [
 	},
 	{
 		"inputs": [],
-		"name": "getDeployedVaults",
+		"name": "refund",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "release",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "released",
 		"outputs": [
 			{
-				"internalType": "address[]",
+				"internalType": "bool",
 				"name": "",
-				"type": "address[]"
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	}
 ];
+
 
 const CHILD_ABI = [
 	{
